@@ -1,4 +1,3 @@
-import { URL_PARAMETER_ERROR, LOADING_UNDEFINED_ERROR } from './../../const';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastController, NavController, Loading, LoadingController, AlertController } from 'ionic-angular';
@@ -53,7 +52,7 @@ export class DriveIonicLibraryProvider {
    */
   post(object: object, url?: string, reqOpts?: object): Promise<any> {
     url = (!url && !this.url) ? null : (!url && this.url) ? this.url : url;
-    if(url == null) throw URL_PARAMETER_ERROR;
+    if(url == null) throw 'URL_PARAMETER_ERROR';
     return new Promise((resolve, reject) => {
       this.http.post(url, object, reqOpts).subscribe((response: any) => {
         resolve(response);
@@ -114,7 +113,7 @@ export class DriveIonicLibraryProvider {
       this.loadingObject = null;
     }
     else {
-      throw LOADING_UNDEFINED_ERROR
+      throw 'LOADING_UNDEFINED_ERROR'
     }
   }
 
